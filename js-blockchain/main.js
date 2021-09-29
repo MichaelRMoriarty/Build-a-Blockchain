@@ -35,6 +35,7 @@ class Blockchain {
   addBlock(newBlock) {
     newBlock.previousHash = this.latestBlock().hash;
     newBlock.hash = newBlock.calculateHash();
+    newBlock.index = this.chain.length;
     this.chain.push(newBlock);
   }
 
@@ -53,7 +54,7 @@ class Blockchain {
 
 let jsChain = new Blockchain();
 jsChain.addBlock(new Block("09/28/21", {amount: 5}));
-jsChain.addBlock(new Block("09/28/21", {amount: 10}));
+jsChain.addBlock(new Block("09/29/21", {amount: 10}));
 
 console.log(JSON.stringify(jsChain, null, 4));
 console.log("Is blockchain valid? " + jsChain.checkValid());
